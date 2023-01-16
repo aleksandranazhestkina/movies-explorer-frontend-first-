@@ -1,0 +1,72 @@
+.promo {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #F3C1F8;
+}
+
+.promo__container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: center;
+  flex-direction: column;
+  min-width: 1280px;
+}
+
+.promo__title {
+  margin-top: 184px;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 1.16;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #111111;
+  z-index: 1;
+  position: absolute;
+  max-width: 730px;
+}
+
+.promo__logo {
+  z-index: 0;
+  position: relative;
+  object-position: center;
+  margin-top: 82px;
+}
+
+.promo__links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
+  min-height: 66px;
+  min-width: 1000%;
+  background-color: #111111;
+  align-items: center;
+  padding: 0;
+  margin-top: 124px;
+  margin-bottom: 0;
+}
+
+.promo__link {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.23;
+  display: flex;
+  align-items: center;
+  text-decoration-line: underline;
+  color: #FFFFFF;
+  padding-left: 40px;
+  cursor: pointer;
+  transform: opacity 0.4s;
+}
+
+.promo__link_project {
+  padding-left: 0;
+}
+
+.promo__link:hover{
+  opacity: 0.6;
+}

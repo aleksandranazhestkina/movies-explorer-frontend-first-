@@ -1,0 +1,76 @@
+.techs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.techs__container {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  flex-direction: column;
+  max-width: 1280px;
+  width: 100%;
+  margin: 100px 70px;
+}
+
+.techs__title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+  color: #000000;
+  border-bottom: 1px solid #000;
+  width: 100%;
+  max-width: 1140px;
+  padding-bottom: 23px;
+}
+
+.techs__quantity {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 1.16;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+.techs__about {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+.techs__stack {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 90px);
+  justify-content: center;
+  max-width: 700px;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 100px 0 0;
+  gap: 10px;
+}
+
+.techs__stack-item {
+  background: #E8E8E8;
+  border-radius: 10px;
+}
+
+.techs__stack-name {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #000000;
+}

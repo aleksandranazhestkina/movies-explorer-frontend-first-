@@ -2,6 +2,7 @@
   display: flex;
   width: 100%;
   justify-content: space-around;
+  background-color: #F3C1F8;
 }
 
 .header__container {
