@@ -70,3 +70,58 @@
 .promo__link:hover{
   opacity: 0.6;
 }
+
+@media screen and (max-width: 800px) {
+  .promo__container {
+    gap: 48px;
+    padding: 140px 44px 76px;
+    min-width: 300px;
+  }
+
+  .promo__logo {
+    max-width: 248px;
+    transition: all .1s ease;
+    margin: 142px 26px 0;
+  }
+
+  .promo__title {
+    font-size: 40px;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .promo__link {
+    padding-left: 40px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .promo__container {
+    gap: 46px;
+    padding: 70px 10px 30px;
+    min-width: 300px;
+    max-height: 633px;
+  }
+
+  .promo__logo {
+    max-width: 248px;
+    transition: all .1s ease;
+    margin: 142px 26px 0;
+  }
+
+  .promo__title {
+    font-size: 29px;
+    line-height: 1.27;
+    letter-spacing: -0.03em;
+    max-width: 300px;
+    margin-top: 210px;
+  }
+
+  .promo__link {
+    padding-left: 24px;
+  }
+
+  .promo__link_project {
+    padding-left: 0;
+  }
+}
