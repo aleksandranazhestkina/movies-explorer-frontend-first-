@@ -3,19 +3,18 @@
   width: 100%;
   display: flex;
   align-items: center;
-  margin-top: 110px;
-  max-width: 1280px;
+  justify-content: center;
 }
 
 .about-project__container {
+  max-width: 1280px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
   flex-direction: column;
-  width: 100%;
-  margin-left: 70px;
-  margin-top: 100px;
+  align-items: flex-start;
+  padding: 180px 70px 90px;
 }
 
 .about-project__title {
@@ -27,8 +26,9 @@
   color: #000;
   border-bottom: 1px solid #000;
   width: 100%;
-  max-width: 1140px;
   padding-bottom: 23px;
+  margin: 0;
+  max-width: 1140px;
 }
 
 .about-project__list {
@@ -64,7 +64,7 @@
 .about-project__scheme {
   display: flex;
   width: 100%;
-  margin-bottom: 110px;
+  max-width: 1140px;
 }
 
 .about-project__backend {
@@ -86,8 +86,6 @@
   color: #FFF;
   background-color: #000
 }
-
-
 
 .about-project__scheme-title {
   font-weight: 500;
@@ -113,4 +111,77 @@
   font-size: 14px;
   line-height: 1.21;
   color: #000;
+  background-color: #F2F2F2;
+  max-width: 912px;
+}
+
+@media screen and (max-width: 800px) {
+  .about-project__container {
+    padding: 90px 50px;
+  }
+
+  .about-project__list{
+    padding-bottom: 93px;
+  }
+
+  .about-project__item-description {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-project__backend-title {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .about-project__scheme-title {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .about-project__frontend-title {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .about-project__container {
+    padding: 70px 18px;
+  }
+
+  .about-project__title {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .about-project__list {
+    flex-direction: column;
+    padding: 60px 0;
+  }
+
+  .about-project__item-title {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .about-project__item-description {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-project__backend-title {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .about-project__scheme-title {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .about-project__frontend-title {
+    font-size: 11px;
+    line-height: 13px;
+  }
 }

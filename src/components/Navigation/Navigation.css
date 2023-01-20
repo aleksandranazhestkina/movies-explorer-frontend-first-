@@ -21,8 +21,12 @@
   color: #111;
   display: flex;
   align-items: center;
+  transform: opacity 0.6s;
 }
 
+.navigation__link:hover{
+  opacity: 0.8;
+}
 .navigation__link_signin {
   color: #fff;
   background-color: #111;
