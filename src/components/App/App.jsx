@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
 import Footer from "../Footer/Footer.jsx";
@@ -13,8 +13,14 @@ import NotFound from "../NotFound/NotFound.jsx";
 
 
 export default function App() {
+  const history = useHistory();
   const headerEndpoints = ['/movies', '/saved-movies', '/profile', '/'];
   const footerEndpoints = ['/movies', '/saved-movies', '/'];
+
+  function goBack() {
+    history.goBack();
+  }
+
   return (
     <div className="app">
       <Route exact path={headerEndpoints}>
@@ -34,7 +40,7 @@ export default function App() {
         <Route path="/saved-movies" element={SavedMovies} />
         <Route path="/profile" element={Profile} />
         <Route path="*">
-          <NotFound />
+          <NotFound goBack={goBack}/>
         </Route>
         <Route exact path={footerEndpoints}>
         <Footer />
