@@ -8,7 +8,6 @@ export default function Login() {
       <form
         className="login__form"
         name="login"
-        noValidate
       >
         <Link to='/' className='login__link'>
           <img src={logo} alt="Логотип" className="login__logo" />
@@ -22,7 +21,6 @@ export default function Login() {
               className="login__input"
               type="email"
               required
-              validate
             />
             <span className="login__error"></span>
           </label>
@@ -30,7 +28,7 @@ export default function Login() {
             <span className="login__label-text">Пароль</span>
             <input
               name="password"
-              className={`login__input`}
+              className="login__input"
               type="password"
               required
             />
@@ -39,7 +37,7 @@ export default function Login() {
         </div>
         <button
           type="submit"
-          className={`login__button`}
+          className="login__button"
         >
           Войти
         </button>

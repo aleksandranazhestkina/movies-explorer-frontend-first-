@@ -1,21 +1,18 @@
 import "./App.css";
 import { Route, Switch, useHistory } from "react-router-dom";
-import Header from "../Header/Header.jsx";
+import { useState, useEffect } from "react";
 import Main from "../Main/Main.jsx";
-import Footer from "../Footer/Footer.jsx";
 import Register from "../Register/Register.jsx";
 import Login from "../Login/Login.jsx";
 import Movies from "../Movies/Movies.jsx";
-import SavedMovies from "../SavedMovies/SavedMovies.jsx";
-import Profile from "../Profile/Profile.jsx";
+
+// import SavedMovies from "../SavedMovies/SavedMovies.jsx";
+// import Profile from "../Profile/Profile.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
-
-
+// import moviesData from "../../utils/movies.js";
 
 export default function App() {
   const history = useHistory();
-  const headerEndpoints = ['/movies', '/saved-movies', '/profile', '/'];
-  const footerEndpoints = ['/movies', '/saved-movies', '/'];
 
   function goBack() {
     history.goBack();
@@ -23,9 +20,6 @@ export default function App() {
 
   return (
     <div className="app">
-      <Route exact path={headerEndpoints}>
-      <Header />
-      </Route>
       <Switch>
         <Route exact path="/">
           <Main />
@@ -36,14 +30,13 @@ export default function App() {
         <Route exact path="/signin">
           <Login />
         </Route>
-        <Route path="/movies" element={Movies} />
-        <Route path="/saved-movies" element={SavedMovies} />
-        <Route path="/profile" element={Profile} />
-        <Route path="*">
-          <NotFound goBack={goBack}/>
+        <Route exact path="/movies">
+          <Movies />
         </Route>
-        <Route exact path={footerEndpoints}>
-        <Footer />
+        {/* <Route path="/saved-movies" element={SavedMovies} />
+        <Route path="/profile" element={Profile} /> */}
+        <Route path="*">
+          <NotFound goBack={goBack} />
         </Route>
       </Switch>
     </div>

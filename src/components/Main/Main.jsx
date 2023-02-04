@@ -5,15 +5,21 @@ import Techs from "../Techs/Techs.jsx";
 import AboutMe from "../AboutMe/AboutMe.jsx";
 import Portfolio from "../Portfolio/Portfolio.jsx";
 import "./Main.css";
+import Header from "../Header/Header.jsx";
+import Footer from "../Footer/Footer.jsx";
 
 export default function Main() {
-    return (
-        <main className="main">
-          <Promo />
-          <AboutProject />
-          <Techs />
-          <AboutMe />
-          <Portfolio />
-        </main>
-    )
+  return (
+    <>
+      <Header />
+      <main className="main">
+        <Promo />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+        <Portfolio />
+      </main>
+      <Footer />
+    </>
+  );
 }
