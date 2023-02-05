@@ -1,19 +1,21 @@
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard.jsx";
 
-export default function MoviesCardList({ moviesData }) {
+export default function MoviesCardList(props) {
   return (
     <section className="movies-card-list">
       <ul className="movies-card-list__list">
-    {moviesData.map((film) => (
+    {props.cards.map((film) => (
           <MoviesCard
-            key={film.id}
-            film={film}
+            key={film._id}
             name={film.title}
+            isLiked={!!film.isLiked}
+            id={film._id}
+            film={film}
+            onClickHandler={film.isLiked ? props.dislikeHandler : props.likeHandler}
           />
-         ))}
+        ))}
       </ul>
-      <button className="movies-card-list__show-more">Ещё</button>
     </section>
   );
 }

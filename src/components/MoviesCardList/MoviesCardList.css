@@ -21,25 +21,6 @@
   justify-items: center;
 }
 
-.movies-card-list__show-more {
-  width: 100%;
-  background-color: #F9F9F9;
-  border-radius: 6px;
-  border-style: none;
-  padding: 10px 0;
-  color: #000;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.25;
-  margin-top: 60px;
-  transition: all .3s ease;
-  cursor: pointer;
-}
-
-.movies-card-list__show-more:hover {
-  opacity: .8;
-}
-
 @media screen and (max-width: 997px) {
   .movies-card-list {
     padding: 70px 30px 80px;
