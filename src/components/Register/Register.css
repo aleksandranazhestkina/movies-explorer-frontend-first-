@@ -7,7 +7,6 @@
   align-items: center;
   padding: 70px 30px 59px;
   box-sizing: border-box;
-  min-height: 100vh;
 }
 
 .register__form {
@@ -48,6 +47,7 @@
   font-size: 24px;
   line-height: 1.21;
   margin: 0;
+  padding-bottom: 50px;
   color: #000;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .register__button {
-  margin-top: auto;
+  margin-top: 80px;
   border-style: none;
   background-color: #000;
   border-radius: 3px;
@@ -138,19 +138,24 @@
 
   .register__form {
     align-items: center;
-    gap: 50px;
+    gap: 20px;
     max-width: 260px;
     flex: 1;
   }
 
+  .register__logo {
+    padding-bottom: 30px;
+  }
+
   .register__labels-container {
     margin-top: 30px;
-    gap: 40px;
+    gap: 20px;
   }
 
   .register__button {
     font-size: 12px;
     line-height: 1.25;
+    margin-top: 220px;
   }
 
   .register__support {

@@ -6,7 +6,7 @@ import Register from "../Register/Register.jsx";
 import Login from "../Login/Login.jsx";
 import Movies from "../Movies/Movies.jsx";
 import SavedMovies from "../SavedMovies/SavedMovies.jsx";
-// import Profile from "../Profile/Profile.jsx";
+import Profile from "../Profile/Profile.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
 import moviesData from "../../utils/movies.js";
 
@@ -67,8 +67,9 @@ export default function App() {
         <Route exact path="/saved-movies">
           <SavedMovies movies={movies} dislikeHandler={dislikeHandler} />
         </Route>
-
-        {/* <Route path="/profile" element={Profile} /> */}
+        <Route path="/profile">
+          <Profile />
+        </Route>
         <Route path="*">
           <NotFound goBack={goBack} />
         </Route>
