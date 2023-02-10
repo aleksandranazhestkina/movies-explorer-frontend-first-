@@ -89,6 +89,7 @@
 .about-me__avatar {
   max-width: 270px;
   max-height: 327px;
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 800px) {

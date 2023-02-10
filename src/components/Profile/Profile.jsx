@@ -19,10 +19,10 @@ export default function Profile() {
             <p className="profile__text">email@ya.ru</p>
           </div>
         </div>
-        <button className="profile__button profile__footer">
+        <button className="profile__button profile__footer" type='submit'>
           Редактировать
         </button>
-        <Link to="/" className="profile__footer profile__footer_out">
+        <Link to="/signin" className="profile__footer profile__footer_out">
           Выйти из аккаунта
         </Link>
       </section>

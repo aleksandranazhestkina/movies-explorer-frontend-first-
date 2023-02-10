@@ -101,7 +101,7 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 730px) {
   .movies-card__poster {
     max-height: 168px;
   }
@@ -123,3 +123,10 @@
   }
 
 }
+
+@media screen and (max-width: 550px) {
+  .movies-card {
+    width: 300px;
+  }
+}
+

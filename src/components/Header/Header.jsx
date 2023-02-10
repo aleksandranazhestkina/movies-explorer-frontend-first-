@@ -9,7 +9,7 @@ export default function Header(props) {
 
   return (
     <header
-      className={`header header__color_${
+      className={`header header_color_${
         location.pathname === "/" ? "rose" : "white"
       }`}
     >
@@ -44,7 +44,7 @@ export default function Header(props) {
           </>
         ) : (
           <>
-            <div className="header__links_home">
+            <div className="header__links-home">
               <Link className="header__link" to="/signup">
                 Регистрация
               </Link>

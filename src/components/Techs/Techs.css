@@ -64,6 +64,8 @@
 .techs__stack-item {
   background: #E8E8E8;
   border-radius: 10px;
+  width: 90px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,6 +79,7 @@
   text-align: center;
   letter-spacing: -0.04em;
   color: #000000;
+  margin: 0;
 }
 
 @media screen and (max-width: 800px) {

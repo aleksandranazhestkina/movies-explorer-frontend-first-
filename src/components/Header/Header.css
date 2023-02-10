@@ -6,11 +6,11 @@
   position: relative;
 }
 
-.header__color_rose {
+.header_color_rose {
   background-color: #F3C1F8;
 }
 
-.header__color_white {
+.header_color_white {
   background-color: #FFF;
 }
 
@@ -43,7 +43,7 @@
   justify-content: space-between;
 }
 
-.header__links_home {
+.header__links-home {
   display: flex;
   align-items: center;
 }

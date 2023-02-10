@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding-bottom: 40px;
 }
 
 .profile__hello {
@@ -68,7 +69,7 @@
 }
 
 .profile__info {
-  margin-bottom: 220px;
+  padding-bottom: 220px;
 }
 
 @media (max-width: 760px) {
@@ -82,7 +83,7 @@
   }
 
   .profile__info {
-      margin-bottom: 379px;
+      padding-bottom: 379px;
   }
 
   .profile__hello {
