@@ -89,6 +89,20 @@
   font-weight: 500;
 }
 
+.register__input_error {
+  color: #ee3465;
+}
+
+.register__error {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #ee3465;
+  position: absolute;
+  top: 47px;
+  left: 0;
+}
+
 .register__button {
   margin-top: 80px;
   border-style: none;
