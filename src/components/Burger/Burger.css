@@ -77,10 +77,18 @@
   opacity: 0.6;
 }
 
-.burger__link_movies {
+.burger__link_active_desktop {
+  font-weight: 500;
+}
+
+.burger__link_active_mobile {
+  border-bottom: 2px #000 solid;
+}
+
+/* .burger__link_movies {
   border-bottom: 2px #000 solid;
   padding-bottom: 4px;
-}
+} */
 
 .burger__link_account {
   font-size: 13px;

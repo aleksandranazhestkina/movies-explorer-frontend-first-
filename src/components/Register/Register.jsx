@@ -1,13 +1,15 @@
-import React, {useEffect} from 'react';
-import './Register.css';
-import { Link } from 'react-router-dom';
-import logo from '../../images/logo.svg';
-import { useFormWithValidation } from '../../hooks/useFormValidation';
+import React, { useEffect } from "react";
+import "./Register.css";
+import { Link } from "react-router-dom";
+import logo from "../../images/logo.svg";
+import { useFormWithValidation } from "../../hooks/useFormValidation";
 
 export default function Register({ handleRegister }) {
-  const { values, handleChange, resetForm, errors, isValid } = useFormWithValidation();
+  const { values, handleChange, resetForm, errors, isValid } =
+    useFormWithValidation();
+  const [authError, setAuthError] = React.useState("");
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     handleRegister(values);
   }
@@ -18,7 +20,12 @@ export default function Register({ handleRegister }) {
 
   return (
     <main className="register">
-      <form className="register__form" name="register" noValidate onSubmit={handleSubmit}>
+      <form
+        className="register__form"
+        name="register"
+        noValidate
+        onSubmit={handleSubmit}
+      >
         <Link to="/" className="register__link">
           <img src={logo} alt="Логотип" className="register__logo" />
         </Link>
@@ -37,7 +44,9 @@ export default function Register({ handleRegister }) {
               pattern="^[A-Za-zА-Яа-яЁё /s -]+$"
               onChange={handleChange}
             />
-            <span className="register__error register__error_input">{errors.name}</span>
+            <span className="register__error register__error_input">
+              {errors.name}
+            </span>
           </label>
           <label className="register__label">
             <span className="register__label-text">E-mail</span>
@@ -51,7 +60,9 @@ export default function Register({ handleRegister }) {
               required
               onChange={handleChange}
             />
-            <span className="register__error register__error_input">{errors.email}</span>
+            <span className="register__error register__error_input">
+              {errors.email}
+            </span>
           </label>
           <label className="register__label">
             <span className="register__label-text">Пароль</span>
@@ -65,12 +76,19 @@ export default function Register({ handleRegister }) {
               required
               onChange={handleChange}
             />
-            <span className="register__error register__error_input">{errors.password}</span>
+            <span className="register__error register__error_input">
+              {errors.password}
+            </span>
           </label>
         </div>
+        {authError !== "" && (
+          <span className="register__error">{authError}</span>
+        )}
         <button
           type="submit"
-          className={`register__button ${isValid && "register__button_disabled"}`}
+          className={`register__button ${
+            !isValid && "register__button_disabled"
+          }`}
           disabled={!isValid}
         >
           Зарегистрироваться
@@ -83,5 +101,5 @@ export default function Register({ handleRegister }) {
         </span>
       </form>
     </main>
-  )
+  );
 }

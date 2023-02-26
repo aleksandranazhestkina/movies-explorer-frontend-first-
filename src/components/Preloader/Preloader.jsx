@@ -1,14 +1,15 @@
-import React from 'react';
 import './Preloader.css';
 
-export default function Preloader() {
-    return (
+export default function Preloader({ isOpen }) {
+  return (
+    <>
+      {isOpen && (
         <div className="preloader">
-            <div className="preloader__container">
-                <span className="preloader__round">
-                    <span className="preloader__text">Ещё</span>
-                </span>
-            </div>
+          <div className="preloader__container">
+            <span className="preloader__round"></span>
+          </div>
         </div>
-    )
-};
+      )}
+    </>
+  );
+}

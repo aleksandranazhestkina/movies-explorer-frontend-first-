@@ -1,94 +1,68 @@
-import image_template from "../images/1.png";
+import { SHORTMOVIES_DURATION } from './constants.js';
 
-const moviesData = [
-  {
-    _id: "1",
-    image: image_template,
-    title: "33 слова о дизайне-1",
-    duration: "1ч 42м",
-    isLiked: true,
-  },
+// проверка изображений полученных от сервера
+function transformMovies(movies) {
+  movies.forEach(movie => {
+    if (!movie.image) {
+      movie.image = 'https://images.unsplash.com/photo-1485846234645-a62644f84728?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1940&q=80';
+      movie.thumbnail = 'https://images.unsplash.com/photo-1485846234645-a62644f84728?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1940&q=80';
+    } else {
+      movie.thumbnail = `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`
+      movie.image = `https://api.nomoreparties.co${movie.image.url}`
+    }
+    if (!movie.country) {
+      movie.country = 'Russia';
+    }
+    if (!movie.nameEN) {
+      movie.nameEN = movie.nameRU;
+    }
+  });
+  return movies
+}
 
-  {
-    _id: "2",
-    image: image_template,
-    title: "33 слова о дизайне-2",
-    duration: "1ч 42м",
-  },
+// фильтрация по длительности
+function filterShortMovies(movies) {
+  return movies.filter(movie => movie.duration < SHORTMOVIES_DURATION);
+}
 
-  {
-    _id: "3",
-    image: image_template,
-    title: "33 слова о дизайне-3",
-    duration: "1ч 42м",
-    isLiked: true,
-  },
+// фильтрация по запросу
+function filterMovies(movies, userQuery, shortMoviesCheckbox) {
+  const moviesByUserQuery = movies.filter((movie) => {
+    const movieRu = String(movie.nameRU).toLowerCase().trim();
+    const movieEn = String(movie.nameEN).toLowerCase().trim();
+    const userMovie = userQuery.toLowerCase().trim();
+    return movieRu.indexOf(userMovie) !== -1 || movieEn.indexOf(userMovie) !== -1;
+  });
 
-  {
-    _id: "4",
-    image: image_template,
-    title: "33 слова о дизайне-4",
-    duration: "1ч 42м",
-    isLiked: true,
-  },
+  if (shortMoviesCheckbox) {
+    return filterShortMovies(moviesByUserQuery);
+  } else {
+    return moviesByUserQuery;
+  }
+}
 
-  {
-    _id: "5",
-    image: image_template,
-    title: "33 слова о дизайне-5",
-    duration: "1ч 42м",
-    isLiked: true,
-  },
+// преобразование длительности
+function transformDuration(duration) {
+  const hours = Math.trunc(duration / 60);
+  const minutes = duration % 60;
+  if (hours === 0) {
+    return `${minutes}м`;
+  } else {
+    return `${hours}ч ${minutes}м`;
+  }
+}
 
-  {
-    _id: "6",
-    image: image_template,
-    title: "33 слова о дизайне-6",
-    duration: "1ч 42м",
-  },
+// cравнение сохраненных фильмов
+function getSavedMovieCard(arr, movie) {
+  return arr.find((item) => {
+    return item.movieId === (movie.id || movie.movieId);
+  });
+}
 
-  {
-    _id: "7",
-    image: image_template,
-    title: "33 слова о дизайне-7",
-    duration: "1ч 42м",
-  },
-
-  {
-    _id: "8",
-    image: image_template,
-    title: "33 слова о дизайне-8",
-    duration: "1ч 42м",
-  },
-
-  {
-    _id: "9",
-    image: image_template,
-    title: "33 слова о дизайне-9",
-    duration: "1ч 42м",
-    isLiked: true,
-  },
-
-  {
-    _id: "10",
-    image: image_template,
-    title: "33 слова о дизайне-10",
-    duration: "1ч 42м",
-  },
-
-  {
-    _id: "11",
-    image: image_template,
-    title: "33 слова о дизайне-11",
-    duration: "1ч 42м",
-  },
-
-  {
-    _id: "12",
-    image: image_template,
-    title: "33 слова о дизайне-12",
-    duration: "1ч 42м",
-  },
-];
-
-export default moviesData;
+export {
+  transformMovies,
+  filterMovies,
+  filterShortMovies,
+  transformDuration,
+  getSavedMovieCard,
+};
