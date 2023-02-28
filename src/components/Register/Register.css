@@ -103,6 +103,11 @@
   left: 0;
 }
 
+.register__error_button {
+  position: absolute;
+  top: 480px;
+}
+
 .register__button {
   margin-top: 80px;
   border-style: none;
@@ -117,6 +122,7 @@
   transition: all .3s ease;
   cursor: pointer;
   font-weight: 500;
+  position: relative;
 }
 
 .register__button:hover {
@@ -177,5 +183,10 @@
     line-height: 1.25;
     bottom: -6%;
     left: 15%;
+  }
+
+  .register__error_button {
+    position: absolute;
+    top: 580px;
   }
 }

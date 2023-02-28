@@ -30,13 +30,12 @@ export default function Movies({
   };
   const currentUser = useContext(CurrentUserContext);
   const [isLoader, setIsLoader] = useState(false);
-  const [shortMovies, setShortMovies] = useState(false); // состояние чекбокса
+  const [shortMovies, setShortMovies] = useState(false);
   const [initialMovies, setInitialMovies] = useState([]); // фильмы полученные с запроса
-  const [filteredMovies, setFilteredMovies] = useState([]); // отфильтрованные по чекбоксу и запросу фильмы
+  const [filteredMovies, setFilteredMovies] = useState([]);
   const [NotFound, setNotFound] = useState(false);
   const [isAllMovies, setIsAllMovies] = useState([]); // все фильмы от сервера
 
-  // поиск по массиву и установка состояния
   function handleSetFilteredMovies(movies, userQuery, shortMoviesCheckbox) {
     const moviesList = filterMovies(movies, userQuery, shortMoviesCheckbox);
     if (moviesList.length === 0) {
@@ -54,7 +53,6 @@ export default function Movies({
     );
   }
 
-  // поиск по запросу
   function handleSearchSubmit(inputValue) {
     localStorage.setItem(`${currentUser.email} - movieSearch`, inputValue);
     localStorage.setItem(`${currentUser.email} - shortMovies`, shortMovies);
@@ -78,7 +76,6 @@ export default function Movies({
     }
   }
 
-  // состояние чекбокса
   function handleShortFilms() {
     setShortMovies(!shortMovies);
     if (!shortMovies) {

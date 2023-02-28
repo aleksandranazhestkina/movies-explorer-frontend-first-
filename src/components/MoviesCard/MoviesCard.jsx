@@ -1,6 +1,6 @@
 import "./MoviesCard.css";
-import { transformDuration } from '../../utils/movies.js';
 import { useLocation } from "react-router-dom";
+import { transformDuration } from '../../utils/movies.js';
 
 export default function MoviesCard({ movie, saved, onLikeClick, onDeleteClick }) {
   const location = useLocation();
@@ -22,7 +22,7 @@ export default function MoviesCard({ movie, saved, onLikeClick, onDeleteClick })
           src={movie.image}
           title={`Описание: ${movie.description} \n\nСнято: ${movie.country} ${movie.year}г.`}
           className="movies-card__poster"
-          alt="кадр из фильма"
+          alt={movie.nameRU}
         />
           </a>
         <div className="movies-card__description">
@@ -31,7 +31,7 @@ export default function MoviesCard({ movie, saved, onLikeClick, onDeleteClick })
             <button
               type="button"
               className={`movies-card__save movies-card__save${
-                !saved ? "" : "_active"
+                saved ? "_active" : ""
               }`}
               onClick={saved ? handleDeleteClick : handleLikeClick}
             ></button>

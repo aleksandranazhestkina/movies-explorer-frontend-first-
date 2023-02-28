@@ -4,7 +4,7 @@ export const MOVIES_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 export const SHORTMOVIES_DURATION = 40;
 export const DEVICE_PARAMS = {
   desktop: {
-    width: 917,
+    width: 1100,
     cards: {
       total: 12,
       more: 4,

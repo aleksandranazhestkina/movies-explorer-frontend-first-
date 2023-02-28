@@ -7,28 +7,27 @@ export function useFormWithValidation() {
   const [errors, setErrors] = React.useState({});
   const [isValid, setIsValid] = React.useState(false);
 
-  const handleChange = (event) => {
-    const target = event.target;
-    const name = target.name;
-    const value = target.value;
+  const handleChange = (e) => {
+    const input = e.target;
+    const { value, name } = input;
 
-    if (name === 'name' && target.validity.patternMismatch) {
-      target.setCustomValidity('Некорректный формат.')
+    if (name === 'name' && input.validity.patternMismatch) {
+      input.setCustomValidity('Некорректный формат.')
     } else {
-      target.setCustomValidity('');
+      input.setCustomValidity('');
     }
 
     if (name === 'email') {
       if (!isEmail(value)) {
-          target.setCustomValidity('Некорректый e-mail.');
+        input.setCustomValidity('Некорректый e-mail.');
       } else {
-          target.setCustomValidity('');
+        input.setCustomValidity('');
       }
     }
 
     setValues({...values, [name]: value});
-    setErrors({...errors, [name]: target.validationMessage });
-    setIsValid(target.closest("form").checkValidity());
+    setErrors({...errors, [name]: input.validationMessage });
+    setIsValid(input.closest("form").checkValidity());
   };
 
   const resetForm = useCallback(

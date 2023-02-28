@@ -27,6 +27,7 @@ export default function App() {
   const [isLoader, setIsLoader] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [savedMoviesList, setSavedMoviesList] = useState([]);
+  const [authError, setAuthError] = useState("");
 
   function handleRegister({ name, email, password }) {
     setIsLoader(true);
@@ -38,7 +39,7 @@ export default function App() {
           history.push("/signin");
         }
       })
-      .catch((err) => console.log(err))
+      .catch((err) => setAuthError(err))
       .finally(() => setIsLoader(false));
   }
 
@@ -112,6 +113,44 @@ export default function App() {
     history.goBack();
   }
 
+  // cохранение фильма
+  function handleSaveMovie(movie) {
+    mainApi
+      .addNewMovie(movie)
+      .then((newMovie) => setSavedMoviesList([newMovie, ...savedMoviesList]))
+      .catch((err) => console.log(err));
+  }
+
+  // удаление фильма
+  // function handleDeleteMovie(movie) {
+  //   const savedMovie = savedMoviesList.find(
+  //     (item) => item.movieId === movie.id || item.movieId === movie.movieId
+  //   );
+  //   mainApi
+  //     .deleteMovie(savedMovie._id)
+  //     .then(() => {
+  //       const newMoviesList = savedMoviesList.filter((m) =>
+  //        movie.id === m.movieId || movie.movieId === m.movieId
+  //       );
+
+  //       setSavedMoviesList(newMoviesList);
+  //       console.log(newMoviesList);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
+
+  function handleDeleteMovie(movie) {
+    const savedMovie = savedMoviesList.find(
+      (item) => item.movieId === movie.id || item.movieId === movie.movieId
+    );
+    mainApi
+      .deleteMovie(savedMovie._id)
+      .then(() => {
+        setSavedMoviesList((state) => state.filter((c) => c.movieId !== movie.movieId));
+      })
+      .catch((err) => console.log(err));
+  }
+
   // получение массива сохраненных фильмов
   useEffect(() => {
     if (loggedIn && currentUser) {
@@ -127,34 +166,6 @@ export default function App() {
     }
   }, [currentUser, loggedIn]);
 
-  // cохранение фильма
-  function handleSaveMovie(movie) {
-    mainApi
-      .addNewMovie(movie)
-      .then((newMovie) => setSavedMoviesList([newMovie, ...savedMoviesList]))
-      .catch((err) => console.log(err));
-  }
-
-  // удаление фильма
-  function handleDeleteMovie(movie) {
-    const savedMovie = savedMoviesList.find(
-      (item) => item.movieId === movie.id || item.movieId === movie.movieId
-    );
-    mainApi
-      .deleteMovie(savedMovie._id)
-      .then(() => {
-        const newMoviesList = savedMoviesList.filter((m) => {
-          if (movie.id === m.movieId || movie.movieId === m.movieId) {
-            return false;
-          } else {
-            return true;
-          }
-        });
-        setSavedMoviesList(newMoviesList);
-      })
-      .catch((err) => console.log(err));
-  }
-
   return (
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
@@ -164,7 +175,7 @@ export default function App() {
           </Route>
           <Route exact path="/signup">
             {!loggedIn ? (
-              <Register handleRegister={handleRegister} />
+              <Register handleRegister={handleRegister} authError={authError} />
             ) : (
               <Redirect to="/" />
             )}
@@ -192,7 +203,6 @@ export default function App() {
             onDeleteClick={handleDeleteMovie}
             loggedIn={loggedIn}
           />
-
           <ProtectedRoute
             path="/profile"
             component={Profile}

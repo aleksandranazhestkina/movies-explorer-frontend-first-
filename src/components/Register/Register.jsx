@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import { useFormWithValidation } from "../../hooks/useFormValidation";
 
-export default function Register({ handleRegister }) {
+export default function Register({ handleRegister, authError }) {
   const { values, handleChange, resetForm, errors, isValid } =
     useFormWithValidation();
-  const [authError, setAuthError] = React.useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -82,7 +81,7 @@ export default function Register({ handleRegister }) {
           </label>
         </div>
         {authError !== "" && (
-          <span className="register__error">{authError}</span>
+          <span className="register__error register__error_button">{authError}</span>
         )}
         <button
           type="submit"

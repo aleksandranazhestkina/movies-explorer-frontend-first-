@@ -1,9 +1,10 @@
 import React from "react";
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import "./Profile.css";
 import Header from "../Header/Header";
 import { useFormWithValidation } from "../../hooks/useFormValidation";
 import CurrentUserContext from "../../context/CurrentUserContext";
+import Burger from "../Burger/Burger";
 
 export default function Profile({ handleSignOut, handleProfile, loggedIn }) {
   const { values, handleChange, resetForm, errors, isValid } =
@@ -25,9 +26,21 @@ export default function Profile({ handleSignOut, handleProfile, loggedIn }) {
     !isValid ||
     (currentUser.name === values.name && currentUser.email === values.email);
 
+    const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+
+    const handleBurgerClick = () => {
+      setIsBurgerOpen(true);
+    };
+    const handleCloseClick = () => {
+      setIsBurgerOpen(false);
+    };
+
   return (
     <>
-      <Header loggedIn={loggedIn} />
+     <Header loggedIn={loggedIn} handleBurgerClick={handleBurgerClick} />
+      {isBurgerOpen && (
+        <Burger isOpen={isBurgerOpen} handleCloseClick={handleCloseClick} />
+      )}
       <section className="profile">
         <form
           className="profile__form"

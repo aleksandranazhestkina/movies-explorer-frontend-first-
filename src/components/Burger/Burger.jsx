@@ -5,8 +5,6 @@ import logoAcc from "../../images/icon__COLOR_icon-main.svg";
 import closeButton from "../../images/close-button.svg";
 
 export default function Burger( {isOpen, handleCloseClick}) {
-  const activeLink = `burger__link_active_${isOpen ? 'mobile' : 'desktop'}`;
-
   return (
     <section
     className={`burger ${isOpen ? "burger_opened" : ""}`}
@@ -20,13 +18,13 @@ export default function Burger( {isOpen, handleCloseClick}) {
           alt="кнопка закрыть"
         />
       </button>
-      <a href="/" className="burger__link" activeClassName={activeLink}>
+      <a href="/" className="burger__link">
         Главная
       </a>
-      <a href="/movies" className="burger__link" activeClassName={activeLink}>
+      <a href="/movies" className="burger__link">
         Фильмы
       </a>
-      <a href="/saved-movies" className="burger__link" activeClassName={activeLink}>
+      <a href="/saved-movies" className="burger__link">
         Сохранённые фильмы
       </a>
       </div>
