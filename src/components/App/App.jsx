@@ -49,20 +49,13 @@ export default function App() {
       .login(email, password)
       .then((jwt) => {
         if (jwt.token) {
-          setLoggedIn(true);
           localStorage.setItem("jwt", jwt.token);
+          setLoggedIn(true);
           history.push("/movies");
         }
       })
       .catch((err) => console.log(err))
       .finally(() => setIsLoader(false));
-  }
-
-  function handleSignOut() {
-    setCurrentUser({});
-    setLoggedIn(false);
-    localStorage.clear();
-    history.push("/");
   }
 
   function handleProfile({ name, email }) {
@@ -122,34 +115,17 @@ export default function App() {
   }
 
   // удаление фильма
-  // function handleDeleteMovie(movie) {
-  //   const savedMovie = savedMoviesList.find(
-  //     (item) => item.movieId === movie.id || item.movieId === movie.movieId
-  //   );
-  //   mainApi
-  //     .deleteMovie(savedMovie._id)
-  //     .then(() => {
-  //       const newMoviesList = savedMoviesList.filter((m) =>
-  //        movie.id === m.movieId || movie.movieId === m.movieId
-  //       );
-
-  //       setSavedMoviesList(newMoviesList);
-  //       console.log(newMoviesList);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
-
-  function handleDeleteMovie(movie) {
+    function handleDeleteMovie(movie) {
     const savedMovie = savedMoviesList.find(
       (item) => item.movieId === movie.id || item.movieId === movie.movieId
     );
-    mainApi
-      .deleteMovie(savedMovie._id)
-      .then(() => {
-        setSavedMoviesList((state) => state.filter((c) => c.movieId !== movie.movieId));
-      })
-      .catch((err) => console.log(err));
-  }
+      mainApi
+        .deleteMovie(savedMovie._id)
+        .then(() => {
+          setSavedMoviesList((state) => state.filter((c) => c.movieId !== savedMovie.movieId));
+        })
+        .catch((err) => console.log(err));
+    }
 
   // получение массива сохраненных фильмов
   useEffect(() => {
@@ -165,6 +141,13 @@ export default function App() {
         .catch((err) => console.log(err));
     }
   }, [currentUser, loggedIn]);
+
+  function handleSignOut() {
+    setCurrentUser({});
+    setLoggedIn(false);
+    localStorage.clear();
+    history.push("/");
+  }
 
   return (
     <div className="app">

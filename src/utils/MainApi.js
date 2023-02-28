@@ -26,7 +26,7 @@ class Api {
         password,
       })
     })
-      .then(res => this._requestResult(res));
+      .then(this._requestResult);
   };
 
   // вход
@@ -36,11 +36,11 @@ class Api {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
     })
-      .then(res => this._requestResult(res));
+      .then(this._requestResult);
   };
 
   // запрос данных пользователя
- getUserInfo() {
+  getUserInfo() {
     return fetch(`${BASE_URL}/users/me`, {
       method: "GET",
       headers: {
@@ -48,7 +48,7 @@ class Api {
         "Authorization": `Bearer ${localStorage.getItem('jwt')}`,
       },
     })
-      .then((res) => this._requestResult(res))
+      .then(this._requestResult)
       .then((data) => {
         return data;
       })
@@ -63,7 +63,7 @@ class Api {
       },
       body: JSON.stringify({ name, email }),
     })
-      .then((res) => this._requestResult(res));
+      .then(this._requestResult);
   }
 
   // Запрос фильмов
@@ -72,7 +72,8 @@ class Api {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
       },
-    }).then((res) => this._requestResult(res));
+    })
+      .then(this._requestResult);
   }
 
   // Запрос на добавление фильма
@@ -96,7 +97,8 @@ class Api {
         nameRU: data.nameRU,
         nameEN: data.nameEN,
       }),
-    }).then((res) => this._requestResult(res));
+    })
+    .then(this._requestResult);
   }
 
   // Запрос на удаление фильма
@@ -106,7 +108,8 @@ class Api {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
       },
-    }).then((res) => this._requestResult(res));
+    })
+    .then(this._requestResult);
   }
 }
 
