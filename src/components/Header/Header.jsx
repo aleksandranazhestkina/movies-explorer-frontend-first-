@@ -1,10 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
+import { useState } from 'react';
 import "./Header.css";
 import logo from "../../images/logo.svg";
 import logoAcc from "../../images/icon__COLOR_icon-main.svg";
 import burger from "../../images/burger.svg";
 
-export default function Header(props) {
+export default function Header({handleBurgerClick, loggedIn}) {
   const location = useLocation();
 
   return (
@@ -17,7 +18,7 @@ export default function Header(props) {
         <Link to="/" className="header__logo-link">
           <img className="header__logo" src={logo} alt="Логотип" />
         </Link>
-        {props.isLoggedIn ? (
+        {loggedIn && (
           <>
             <div className="header__links">
               <Link className="header__link header__link_movies" to="/movies">
@@ -42,7 +43,8 @@ export default function Header(props) {
               </Link>
             </nav>
           </>
-        ) : (
+        ) }
+        {!loggedIn && (
           <>
             <div className="header__links-home">
               <Link className="header__link" to="/signup">
@@ -55,11 +57,11 @@ export default function Header(props) {
           </>
         )}
       </div>
-      {props.isLoggedIn && (
+      {loggedIn && (
         <button
           className="header__burger-button"
           type="button"
-          onClick={props.handleBurgerClick}
+          onClick={handleBurgerClick}
         >
           <img className="header__burger" src={burger} alt="кнопка бургер" />
         </button>

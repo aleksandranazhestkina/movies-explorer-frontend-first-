@@ -1,44 +1,50 @@
 import "./MoviesCard.css";
-import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { transformDuration } from '../../utils/movies.js';
 
-export default function MoviesCard({ film }) {
+export default function MoviesCard({ movie, saved, onLikeClick, onDeleteClick }) {
   const location = useLocation();
 
-  const [isLiked, setIsCardSaved] = useState(false);
+  // сохранение фильма
+  function handleLikeClick() {
+    onLikeClick(movie);
+  }
 
-  const handleOnClick = () => {
-    setIsCardSaved(!isLiked);
-  };
-
+  // удаление фильма
+  function handleDeleteClick() {
+    onDeleteClick(movie);
+  }
   return (
     <li className="movies-card">
       <article className="movies-card__item">
+      <a target="_blank" rel="noreferrer" href={movie.trailerLink}>
         <img
-          src={film.image}
+          src={movie.image}
+          title={`Описание: ${movie.description} \n\nСнято: ${movie.country} ${movie.year}г.`}
           className="movies-card__poster"
-          alt="кадр из фильма"
+          alt={movie.nameRU}
         />
+          </a>
         <div className="movies-card__description">
-          <h2 className="movies-card__title"> {film.title}</h2>
+          <h2 className="movies-card__title">{movie.nameRU}</h2>
           {location.pathname === "/movies" && (
             <button
               type="button"
               className={`movies-card__save movies-card__save${
-                !isLiked ? "" : "_active"
+                saved ? "_active" : ""
               }`}
-              onClick={handleOnClick}
+              onClick={saved ? handleDeleteClick : handleLikeClick}
             ></button>
           )}
           {location.pathname === "/saved-movies" && (
             <button
               type="button"
               className="movies-card__button-delete"
-              onClick={handleOnClick}
+              onClick={handleDeleteClick}
             ></button>
           )}
         </div>
-        <span className="movies-card__duration">{film.duration}</span>
+        <span className="movies-card__duration">{transformDuration(movie.duration)}</span>
       </article>
     </li>
   );

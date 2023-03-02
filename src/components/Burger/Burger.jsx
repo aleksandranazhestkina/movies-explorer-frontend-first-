@@ -4,29 +4,29 @@ import { Link } from "react-router-dom";
 import logoAcc from "../../images/icon__COLOR_icon-main.svg";
 import closeButton from "../../images/close-button.svg";
 
-export default function Burger(props) {
+export default function Burger( {isOpen, handleCloseClick}) {
   return (
     <section
-    className={`burger ${props.isOpen ? "burger_opened" : ""}`}
+    className={`burger ${isOpen ? "burger_opened" : ""}`}
   >
     <div className="burger__container">
       <div className="burger__links">
-      <button className="burger__button" onClick={props.handleCloseClick} type="button">
+      <button className="burger__button" onClick={handleCloseClick} type="button">
         <img
           className="burger__button-image"
           src={closeButton}
           alt="кнопка закрыть"
         />
       </button>
-      <Link to="/" className="burger__link">
+      <a href="/" className="burger__link">
         Главная
-      </Link>
-      <Link to="/movies" className="burger__link burger__link_movies">
+      </a>
+      <a href="/movies" className="burger__link">
         Фильмы
-      </Link>
-      <Link to="/saved-movies" className="burger__link">
+      </a>
+      <a href="/saved-movies" className="burger__link">
         Сохранённые фильмы
-      </Link>
+      </a>
       </div>
       <Link
         to="/profile"
